@@ -2,6 +2,7 @@ import { getProducts, getCategory } from '../services/index'
 import ArrowRigth from '../components/Icons/ArrowRigth'
 import ArrowSplit from '../components/Icons/ArrowSplit'
 import Avatar from '../components/Icons/Avatar'
+import Cart from '../components/Icons/Cart'
 import Clock from '../components/Icons/Clock'
 import Collapse from '../components/Icons/Collapse'
 import HamburguerWithColor from '../components/Icons/HamburguerWithColor'
@@ -17,16 +18,13 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   const [products, setProducts] = useState([])
   const [category, setCategory] = useState([])
-
+  const [count, setCount] = useState(1)
 
   useEffect(() => {
     getProducts().then(products => setProducts(products))
     getCategory().then(category => setCategory(category))
 
   }, [])
-
-
-
 
   return (
     <>
@@ -35,7 +33,9 @@ export default function Home() {
         <meta name="description" content="Tecnic test to IMAGINAMOS S.A.S" />
         <link rel="icon" href="/store.ico" />
       </Head>
+
       <div className={styles.container}>
+
         <div className={styles.content}>
           <header className={styles.header}>
             <Collapse />
@@ -54,7 +54,7 @@ export default function Home() {
                 <Image src={Party} alt="Party" width={30} height={30} />
               </h2>
               <p>$0 delivery free for orders over $10 for 30 days</p>
-              <a href="">Learn more<ArrowRigth /></a>
+              <a href="">Learn more<ArrowRigth fill="#FE652B" /></a>
             </div>
           </div>
 
@@ -95,14 +95,15 @@ export default function Home() {
               products.map(({ id, name, qualification, time, price, image }) =>
                 <div className={styles.cardProduct} key={id}>
                   <div className={styles.imageBox}>
-                    <Image className={styles.imageCard} src={image} alt={name} width={250} height={150} />
+                    <Image className={styles.imageCard} src={image} alt={name} width={300} height={170} />
                     <div className={styles.durations}>{time}</div>
                   </div>
                   <h3>{name}</h3>
                   <div className={styles.score}>
-                    <button><Star />{qualification}</button>
+                    <button className={styles.star} ><Star />{qualification}</button>
                     <p>$ {price}</p>
                   </div>
+                  <button className={styles.btnCart}><Cart /></button>
                 </div>
               )
             }
@@ -111,10 +112,13 @@ export default function Home() {
 
         <div className={styles.myOrder}>
           <header className={styles.orderHeader}>
+            <button className={styles.btnLogin}>Login</button>
             <Avatar />
             <p className={styles.numberOfProducts}>3</p>
           </header>
+
           <h1 className={styles.titleMyOrder}>My 😎 <br />Order</h1>
+
           <div className={styles.userInfo}>
             <div className={styles.directions}>
               <p>625 St Marks Ave</p>
@@ -125,18 +129,47 @@ export default function Home() {
               <a href="" className={styles.chooseTime}>Choose time</a>
             </div>
           </div>
-          <div className={styles.products}>
 
+          <div className={styles.cart}>
+            {
+              products.map(({ id, name, price, image }) =>
+                <div className={styles.product} key={id}>
+                  <Image className={styles.imageCart} src={image} alt={name} width={80} height={50} />
+                  <p>1</p>
+                  <p>x</p>
+                  <h5>{name}</h5>
+                  <p>{price}</p>
+                </div>
+              )
+            }
           </div>
-          <h1>Total: </h1>
-          <div>
-            <p>Persons</p>
-            <input type="number" name="" id="" />
-            <button>Checkout &rarr;</button>
+
+          <h2 className={styles.totalBuy}>Total: </h2>
+
+          <div className={styles.totalCart}>
+            <div className={styles.persons}>
+              <h3>Persons</h3>
+              <div className={styles.count}>
+                {
+                  count === 1
+                    ?
+                    <>
+                      <h3>{count}</h3>
+                      <button className={styles.countButton} onClick={() => setCount(count + 1)}>+</button>
+                    </>
+                    :
+                    <>
+                      <button className={styles.countButton} onClick={() => setCount(count - 1)}>-</button>
+                      <h3>{count}</h3>
+                      <button className={styles.countButton} onClick={() => setCount(count + 1)}>+</button>
+                    </>
+                }
+              </div>
+            </div>
+            <button className={styles.checkout}><h3>Checkout</h3><ArrowRigth fill="#000" /></button>
           </div>
-
-
         </div>
+
       </div >
     </>
 

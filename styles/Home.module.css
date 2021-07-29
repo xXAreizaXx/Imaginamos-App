@@ -1,7 +1,7 @@
 .container {
     display: grid;
-    margin: 0 5% 0 5%;
-    grid-template-columns: 76% 21%;
+    margin-left: 5%;
+    grid-template-columns: 70% 27%;
     grid-gap: 3%;
     grid-template-rows: 1fr;
 }
@@ -191,9 +191,13 @@
 }
 
 .cardProduct {
+    box-shadow:  
+        5px 5px 17px #e7e7e8,
+        -5px -5px 17px #ffffff;
     display: flex;
+    height: 100%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .imageCard {
@@ -210,7 +214,7 @@
     border-radius: 0px 10px 0px 10px;
     background-color: #F9F8F9;
     position: absolute;
-    top: 107px;
+    top: 127px;
 }
 
 .score {
@@ -221,7 +225,8 @@
     align-items: center;
 }
 
-.score button {
+.star {
+    cursor: pointer;
     margin-right: 10px;
     display: flex;
     align-items: center;
@@ -229,26 +234,56 @@
     border: none;
 }
 
-.score button svg{
+.star svg{
     margin-right: 10px;
 }
 
+.btnCart {
+    background-color: #13b868;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    transition: .7s;
+}
+
+.btnCart:hover {
+    transition: .7s;
+    opacity: .8;
+}
 
 
-
-.myOrder {
-    padding: 20px;
+.myOrder {    
     background-color: #FDFDFB;
     display: grid;
-    grid-template-rows: repeat(4, max-content);
+    grid-template-rows: repeat(6, min-content);
     grid-gap: 3%;
 }
 
 .orderHeader {
+    margin-right: 5%;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-around;
     align-items: center;
+}
+
+.btnLogin {
+    width: 50%;
+    font-weight: 200;
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: #FFF;
+    background-color: #5538A2;
+    transition: .7s;
+}
+
+.btnLogin:hover {
+    transition: .7s;
+    border: 2px solid #5538A2;
+    color: #000;
+    background-color: #FFF;
+
 }
 
 .numberOfProducts {
@@ -259,6 +294,7 @@
 }
 
 .userInfo {
+    margin-right: 5%;
     border-radius: 10px;
     color: #FFF;
     background-color: #5538A2;
@@ -287,6 +323,7 @@
     align-items: center;
     justify-content: center;    
 }
+
 .deliveryTime p svg {
     border-radius: 10px;
     padding: 5px;
@@ -298,4 +335,86 @@
     text-decoration: none;
     cursor: pointer;
     color: #FED748;
+}
+
+.cart {
+    margin-right: 5%;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.imageCart {
+    border-radius: 10px;
+}
+
+.product h5{
+    width: 30%;
+}
+
+.totalBuy {
+    margin: 0 5% 0 0;
+}
+
+.totalCart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.persons {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.persons h3 {
+    margin: 0;
+}
+
+.count {
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #C8C8C8;
+}
+
+.count h3 {
+    margin: 0px 10px 0px 10px;
+}
+
+.countButton {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #C8C8C8;
+    border: 1px solid transparent;
+    height: 10%;
+}
+
+.checkout {
+    display: flex;
+    align-items: center;
+    background-color: #FED748;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    border: none;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.checkout svg {
+    margin-left: 10px;
 }
