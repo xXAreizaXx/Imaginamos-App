@@ -1,13 +1,13 @@
 export function getProducts() {
     return (
-        fetch('http://localhost:3000/api/Products')
+        fetch('https://chukwudi.vercel.app/api/Products')
             .then(res => res.json())
     )
 }
 
 export function getCategory() {
     return (
-        fetch('http://localhost:3000/api/Category')
+        fetch('https://chukwudi.vercel.app/api/Category')
             .then(res => res.json())
     )
 }
