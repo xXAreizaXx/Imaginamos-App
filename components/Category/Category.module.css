@@ -1,0 +1,113 @@
+.navCategory {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.delivery {
+    align-content: center;
+    background-color: #FE652B;
+    border-radius: 20px;
+    color: #FFF;
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    justify-content: center;
+    padding: 10px 20px 10px 20px;
+    width: 20%;
+}
+
+.delivery label {
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+}
+
+.delivery select{
+    background-color: #FE652B;
+    border: none;
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 12px;
+   
+}
+
+.delivery svg {
+    margin-right: 5px;
+}
+
+.menu {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.listMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    width: 90%;
+}
+
+.listMenu a {    
+    align-items: center;
+    background-color: #FEFEFF;
+    border-radius: 50px;
+    box-shadow:  
+        5px 5px 17px #e7e7e8,
+        -5px -5px 17px #ffffff;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    height: 150px;
+    padding: 10px;
+    text-decoration: none;
+    transition: .7s;
+    width: 85px;
+}
+
+.listMenu a:hover {
+    background-color: #FED741;
+    transition: .7s;
+}
+
+.listMenu li button {
+    background-color: #FEFEFF;
+    border-radius: 50%;
+    border: 1px solid #CCC;
+    height: 70px;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 70px;
+
+}
+
+.arrowSplit {
+    align-items: center;
+    border-radius: 100%;
+    border: none;
+    display: flex;
+    height: 10%;
+    padding: 15px;
+    transition: .7s;
+}
+
+.arrowSplit:hover {
+    background-color: rgb(199, 199, 199);    
+    transition: .7s;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: grid;
+        grid-template-columns: 90% 10%;
+        grid-template-rows: repeat(2, 180px);
+    }
+}
+

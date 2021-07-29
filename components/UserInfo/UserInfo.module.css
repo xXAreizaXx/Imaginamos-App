@@ -1,0 +1,40 @@
+.userInfo {
+    background-color: #5538A2;
+    border-radius: 10px;
+    color: #FFF;
+    margin: auto;
+    width: 70%;
+}
+
+.directions {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.deliveryTime {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.deliveryTime p {
+    align-items: center;
+    display: flex;
+    justify-content: center;    
+}
+
+.deliveryTime p svg {
+    background-color: #66499d;
+    border-radius: 10px;
+    margin-right: 10px; 
+    padding: 5px;
+}
+
+.edit, .chooseTime {
+    color: #FED748;
+    cursor: pointer;
+    text-decoration: none;
+}

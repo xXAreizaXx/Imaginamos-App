@@ -1,29 +1,23 @@
-import { getProducts, getCategory } from '../services/index'
+import { getProducts } from '../services/index'
+import { useState, useEffect } from 'react'
 import ArrowRigth from '../components/Icons/ArrowRigth'
-import ArrowSplit from '../components/Icons/ArrowSplit'
-import Avatar from '../components/Icons/Avatar'
 import Cart from '../components/Icons/Cart'
-import Clock from '../components/Icons/Clock'
-import Collapse from '../components/Icons/Collapse'
-import HamburguerWithColor from '../components/Icons/HamburguerWithColor'
+import Category from '../components/Category/Category'
 import Head from 'next/head'
+import Header from '../components/Header/Header'
 import Image from 'next/image'
-import Party from '../assets/images/d.png'
-import Publish from '../assets/images/headerimage.png'
-import React, { useState, useEffect } from 'react'
-import Search from '../components/Icons/Search'
+import OrderHeader from '../components/OrderHeader/OrderHeader'
+import Publisher from '../components/Publisher/Publisher'
 import Star from '../components/Icons/Star'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
-import useUser, { USER_STATES } from "../hooks/useUser";
+import UserInfo from '../components/UserInfo/UserInfo'
 
 export default function Home() {
-  const user = useUser();
   const [products, setProducts] = useState([])
-  const [addCount, setAddCount] = useState(1)
   const [addCart, setAddCart] = useState([])
-  const [category, setCategory] = useState([])
   const [count, setCount] = useState(1)
+  var countAddCart = 1;
+  var totalPrice = 0
 
   const handleClickAdd = (e) => {
     const id = parseInt(e.target.id);
@@ -37,12 +31,11 @@ export default function Home() {
     countAddCart = e.target.value;
   }
 
-  useEffect(() => {
-    getProducts().then(products => setProducts(products))
-  }, [])
 
   useEffect(() => {
-    getCategory().then(category => setCategory(category))
+    getProducts()
+      .then(products => setProducts(products))
+
   }, [])
 
   return (
@@ -52,63 +45,11 @@ export default function Home() {
         <meta name="description" content="Tecnic test to IMAGINAMOS S.A.S" />
         <link rel="icon" href="/store.ico" />
       </Head>
-
       <div className={styles.container}>
-
+        <Header />
         <div className={styles.content}>
-          <header className={styles.header}>
-            <Collapse />
-            <h2>Chukwudi</h2>
-            <div className={styles.inputSearch}>
-              <Search />
-              <input type="search" name="Search" id={styles.search} placeholder="Search" />
-            </div>
-          </header>
-
-          <div className={styles.publisher}>
-            <Image className={styles.imgPublish} src={Publish} alt="Publish" width={250} height={250} />
-            <div className={styles.prom}>
-              <h2>
-                $0 delivery for 30 days!
-                <Image src={Party} alt="Party" width={30} height={30} />
-              </h2>
-              <p>$0 delivery free for orders over $10 for 30 days</p>
-              <a href="">Learn more<ArrowRigth fill="#FE652B" /></a>
-            </div>
-          </div>
-
-          <div className={styles.category}>
-            <div className={styles.navCategory}>
-              <h1>Restaurants <HamburguerWithColor /></h1>
-              <div className={styles.delivery}>
-                <label><Clock fill="#FFF" with="15" height="15" />Delivery: </label>
-                <select>
-                  <option defaultValue>Now</option>
-                  <option value="1">15 min</option>
-                  <option value="2">25 min</option>
-                  <option value="3">35 min</option>
-                </select>
-              </div>
-            </div>
-            <div className={styles.menu}>
-              <ol className={styles.listMenu}>
-                {
-                  category.map(({ id, icon, name }) =>
-                    <li key={id}>
-                      <a href="">
-                        <button>
-                          <Image src={icon} alt={name} width={30} height={30} />
-                        </button>
-                        {name}
-                      </a>
-                    </li>
-                  )
-                }
-              </ol>
-              <button className={styles.arrowSplit}><ArrowSplit /></button>
-            </div>
-          </div>
-
+          <Publisher />
+          <Category />
           <div className={styles.products}>
             {
               products.map(({ id, name, qualification, time, price, image }) =>
@@ -128,54 +69,25 @@ export default function Home() {
             }
           </div>
         </div>
-
         <div className={styles.myOrder}>
-          <header className={styles.orderHeader}>
-            {
-              user
-                ?
-                <>
-                  <h2 className={styles.userName}>{user.username}</h2>
-                  <Image className={styles.imageAvatar} src={user.avatar} alt={user.username} width={45} height={45} />
-                </>
-                :
-                <>
-                  <Link href="/Login"><a className={styles.btnLogin}>Login</a></Link>
-                  <Avatar />
-                </>
-            }
-            <p className={styles.numberOfProducts}>{addCart.length}</p>
-          </header>
-
-          <h1 className={styles.titleMyOrder}>My 😎 <br />Order</h1>
-
-          <div className={styles.userInfo}>
-            <div className={styles.directions}>
-              <p>625 St Marks Ave</p>
-              <a href="" className={styles.edit}>Edit</a>
-            </div>
-            <div className={styles.deliveryTime}>
-              <p><Clock fill="#FED748" with="25" height="25" />35 min</p>
-              <a href="" className={styles.chooseTime}>Choose time</a>
-            </div>
-          </div>
+          <OrderHeader count={addCart} />
+          <h1 className={styles.titleMyOrder}>My 😎 Order</h1>
+          <UserInfo />
 
           <div className={styles.cart}>
             {
               addCart.map(({ id, name, price, image }) =>
                 <div className={styles.product} key={id}>
                   <Image className={styles.imageCart} src={image} alt={name} width={80} height={50} />
-                  <input className={styles.countCart} type="number" id={id} onChange={handleChangeAdd} />
+                  <input className={styles.countCart} type="number" min="1" placeholder="1" id={id} onChange={handleChangeAdd} />
                   <p>x</p>
                   <h5>{name}</h5>
                   <p>{price}</p>
                 </div>
               )
             }
+            <h2 className={styles.totalBuy}>Total: {totalPrice}</h2>
           </div>
-
-          <h2 className={styles.totalBuy}>Total: </h2>
-
           <div className={styles.totalCart}>
             <div className={styles.persons}>
               <h3>Persons</h3>

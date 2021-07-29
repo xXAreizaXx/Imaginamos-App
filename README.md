@@ -35,10 +35,9 @@ You will also see any lint errors in the console.
 - [x] Create a List of Products.
 - [x] Create a List of Products.
 - [x] Create method 'AddToCart'.
-- [ ] Spinner for the Login.
-- [ ] Responsive Design.
+- [x] Responsive Design.
+- [x] Minify the app by creating components.
 - [ ] Add the total of the products.
-- [ ] Minify the app by creating components.
 
 ## Learn More about my Api 'Products' and my Api 'Category' 🤔
 

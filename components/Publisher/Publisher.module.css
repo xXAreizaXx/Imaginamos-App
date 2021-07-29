@@ -1,0 +1,36 @@
+.publisher {
+    align-items: center;
+    background-color: #FEF6EB;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.prom {
+    width: 60%;
+}
+
+.publisher h2 {
+    align-items: center;
+    color: #FE652B;
+    display: flex;
+    text-decoration: none;
+}
+
+.publisher a  {
+    align-items: center;
+    color: #FE652B;
+    display: flex;
+    float: right;
+    text-decoration: none;
+}
+
+.publisher svg {
+    margin-left: 10px;
+}
+
+.publisher p {
+    color: #9A9189;
+}

@@ -1,12 +1,12 @@
-import styles from './Login.module.css'
-import Image from 'next/image'
-import Logo from '../../public/store.png'
-import Head from 'next/head'
-import Google from '../../components/Icons/Google'
-import GitHub from '../../components/Icons/GitHub'
 import { loginWithGitHub, loginWithGoogle } from "../../firebase/client";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import GitHub from '../../components/Icons/GitHub'
+import Google from '../../components/Icons/Google'
+import Head from 'next/head'
+import Image from 'next/image'
+import Logo from '../../public/store.png'
+import styles from './Login.module.css'
 import useUser, { USER_STATES } from "../../hooks/useUser";
 
 export default function Login() {
@@ -31,7 +31,6 @@ export default function Login() {
                 <title>Chukwudi | Login</title>
                 <link rel="icon" href="/store.ico" />
             </Head>
-
             <div className={styles.container}>
                 <div className={styles.content}>
                     <Image src={Logo} alt="" width={200} height={200} />

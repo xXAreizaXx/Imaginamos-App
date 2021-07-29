@@ -1,0 +1,25 @@
+.header {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 10% 30% 60%;
+}
+
+.inputSearch {
+    align-items: center;
+    background-color: #F9F8F9; 
+    border-radius: 10px;
+    display: flex;
+    padding: 10px;
+    width: 100%;
+}
+
+#search {
+    background-color: #F9F8F9;
+    border: none;
+    font-family: 'Poppins';
+    margin-left: 15px;
+}
+
+#search:focus {
+    outline: none;
+}
