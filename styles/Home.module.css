@@ -1,8 +1,8 @@
 .container {
     display: grid;
     margin-left: 5%;
-    grid-template-columns: 70% 27%;
-    grid-gap: 3%;
+    grid-template-columns: 65% 30%;
+    grid-gap: 5%;
     grid-template-rows: 1fr;
 }
 
@@ -239,6 +239,7 @@
 }
 
 .btnCart {
+    cursor: pointer;
     background-color: #13b868;
     border: none;
     border-radius: 10px;
@@ -267,15 +268,28 @@
     align-items: center;
 }
 
+.userName {
+    text-transform: capitalize;
+}
+
+.imageAvatar {
+    border-radius: 10px;
+}
+
 .btnLogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     width: 50%;
     font-weight: 200;
     padding: 10px;
     border: 2px solid transparent;
-    border-radius: 10px;
+    border-radius: 40px;
     color: #FFF;
     background-color: #5538A2;
     transition: .7s;
+    cursor: pointer;
 }
 
 .btnLogin:hover {
@@ -294,14 +308,15 @@
 }
 
 .userInfo {
-    margin-right: 5%;
+    margin: auto;
     border-radius: 10px;
     color: #FFF;
+    width: 70%;
     background-color: #5538A2;
 }
 
 .titleMyOrder {
-    margin: 0;
+    margin: 0 10% 0 15%;
 }
 
 .directions {
@@ -353,15 +368,20 @@
     border-radius: 10px;
 }
 
+.countCart {
+    width: 10%
+}
+
 .product h5{
     width: 30%;
 }
 
 .totalBuy {
-    margin: 0 5% 0 0;
+    margin: 0 10% 0 10%;
 }
 
 .totalCart {
+    margin: 0 0 0 10%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

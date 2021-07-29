@@ -14,22 +14,41 @@ import React, { useState, useEffect } from 'react'
 import Search from '../components/Icons/Search'
 import Star from '../components/Icons/Star'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import useUser, { USER_STATES } from "../hooks/useUser";
 
 export default function Home() {
+  const user = useUser();
   const [products, setProducts] = useState([])
+  const [addCount, setAddCount] = useState(1)
+  const [addCart, setAddCart] = useState([])
   const [category, setCategory] = useState([])
   const [count, setCount] = useState(1)
 
+  const handleClickAdd = (e) => {
+    const id = parseInt(e.target.id);
+    const add = products[id - 1]
+
+    e.target.disabled = true
+    setAddCart([...addCart, add])
+  }
+
+  const handleChangeAdd = (e) => {
+    countAddCart = e.target.value;
+  }
+
   useEffect(() => {
     getProducts().then(products => setProducts(products))
-    getCategory().then(category => setCategory(category))
+  }, [])
 
+  useEffect(() => {
+    getCategory().then(category => setCategory(category))
   }, [])
 
   return (
     <>
       <Head>
-        <title>Chukwudi</title>
+        <title>Chukwudi | Home</title>
         <meta name="description" content="Tecnic test to IMAGINAMOS S.A.S" />
         <link rel="icon" href="/store.ico" />
       </Head>
@@ -65,9 +84,9 @@ export default function Home() {
                 <label><Clock fill="#FFF" with="15" height="15" />Delivery: </label>
                 <select>
                   <option defaultValue>Now</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="1">15 min</option>
+                  <option value="2">25 min</option>
+                  <option value="3">35 min</option>
                 </select>
               </div>
             </div>
@@ -103,7 +122,7 @@ export default function Home() {
                     <button className={styles.star} ><Star />{qualification}</button>
                     <p>$ {price}</p>
                   </div>
-                  <button className={styles.btnCart}><Cart /></button>
+                  <button className={styles.btnCart} disabled={false} id={id} onClick={handleClickAdd} ><Cart /></button>
                 </div>
               )
             }
@@ -112,9 +131,20 @@ export default function Home() {
 
         <div className={styles.myOrder}>
           <header className={styles.orderHeader}>
-            <button className={styles.btnLogin}>Login</button>
-            <Avatar />
-            <p className={styles.numberOfProducts}>3</p>
+            {
+              user
+                ?
+                <>
+                  <h2 className={styles.userName}>{user.username}</h2>
+                  <Image className={styles.imageAvatar} src={user.avatar} alt={user.username} width={45} height={45} />
+                </>
+                :
+                <>
+                  <Link href="/Login"><a className={styles.btnLogin}>Login</a></Link>
+                  <Avatar />
+                </>
+            }
+            <p className={styles.numberOfProducts}>{addCart.length}</p>
           </header>
 
           <h1 className={styles.titleMyOrder}>My 😎 <br />Order</h1>
@@ -132,10 +162,10 @@ export default function Home() {
 
           <div className={styles.cart}>
             {
-              products.map(({ id, name, price, image }) =>
+              addCart.map(({ id, name, price, image }) =>
                 <div className={styles.product} key={id}>
                   <Image className={styles.imageCart} src={image} alt={name} width={80} height={50} />
-                  <p>1</p>
+                  <input className={styles.countCart} type="number" id={id} onChange={handleChangeAdd} />
                   <p>x</p>
                   <h5>{name}</h5>
                   <p>{price}</p>

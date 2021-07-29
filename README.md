@@ -20,22 +20,27 @@ You will also see any lint errors in the console.
 
 ## Preview 📰
 ### **[Commits]**
-##### _a_
+##### _Home_
+![image](https://user-images.githubusercontent.com/61436653/127545468-80d98f79-6840-49ca-9d3c-d4db9e3ae535.png)
+
+##### _Login_
+![image](https://user-images.githubusercontent.com/61436653/127545743-83c77ca4-5307-460e-929c-88b65a445ce1.png)
 
 ## Features 📝
 
-- [x] Login. 
-- [x] Headers.
-- [x] Create de Api Products.
-- [x] Create Style Cards.
-- [x] Minify the app by creating components
+- [x] Login with Firebase. 
+- [x] Headers and the rest of Design.
+- [x] Create Api Products and consume.
+- [x] Create Api Category and consume.
 - [x] Create a List of Products.
-- [ ] Create method 'addProduct' for add prodcut to the list.
-- [ ] Create other pages like...(Ruta, Config, Error404)
-- [ ] Implement Firebase.
-- [ ] Catch the user info.
+- [x] Create a List of Products.
+- [x] Create method 'AddToCart'.
+- [ ] Spinner for the Login.
+- [ ] Responsive Design.
+- [ ] Add the total of the products.
+- [ ] Minify the app by creating components.
 
-## Learn More about my Api 'Products' 🤔
+## Learn More about my Api 'Products' and my Api 'Category' 🤔
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/Products](http://localhost:3000/api/Products). This endpoint can be edited in `pages/api/Products.js`.
 
@@ -45,4 +50,4 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Deployment on Vercel 🚀
 
-Is deployed in [Vercel]()
+Is deployed in [Vercel](https://chukwudi.vercel.app/)

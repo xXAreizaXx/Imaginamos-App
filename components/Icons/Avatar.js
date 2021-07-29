@@ -3,8 +3,8 @@ import * as React from "react"
 export default function Avatar(props) {
     return (
         <svg
-            height={20}
-            width={20}
+            height={25}
+            width={25}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
             {...props}>
