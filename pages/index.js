@@ -16,7 +16,7 @@ export default function Home() {
   const [addCart, setAddCart] = useState([])
   const [count, setCount] = useState(1)
   const [products, setProducts] = useState([])
-  const [total, setTotal] = useState([])
+  var sumTotal = 0;
   var countAddCart = 1;
 
   const handleClickAdd = (e) => {
@@ -33,9 +33,13 @@ export default function Home() {
     const id = parseInt(e.target.id) - 1
     const price = addCart[id].price;
     const totalPrice = price * countAddCart;
+    const queryPrice = document.querySelectorAll('p.priceTotal')
 
     document.getElementsByName(`${e.target.id}`)[0].innerHTML = totalPrice;
-    setTotal(totalPrice);
+
+    for (let i = 0; i < queryPrice.length; i++) {
+      document.getElementById('totalBuy').innerHTML = 'Total: ' + (sumTotal += parseInt(queryPrice[i].innerHTML));
+    }
   }
 
 
@@ -88,11 +92,11 @@ export default function Home() {
                   <input className={styles.countCart} type="number" min="1" placeholder="1" id={id} onChange={handleChangeAdd} />
                   <p>x</p>
                   <h5>{name}</h5>
-                  <p name={id} accessKey={id}>{price}</p>
+                  <p className="priceTotal" name={id} accessKey={id}>{price}</p>
                 </div>
               )
             }
-            <h2 className={styles.totalBuy}>Total: {total * count}</h2>
+            <h2 className={styles.totalBuy} id="totalBuy"></h2>
           </div>
           <div className={styles.totalCart}>
             <div className={styles.persons}>
