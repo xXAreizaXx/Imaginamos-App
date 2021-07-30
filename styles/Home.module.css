@@ -195,7 +195,7 @@
         display: grid;
         grid-gap: 0;
         grid-template-columns: 1fr;
-        grid-template-rows: 5% 45% 50%;
+        grid-template-rows: 5% 25% 70%;
     }
     
     .content {
@@ -239,7 +239,7 @@
     }
 
     .durations {
-        top: 128px;
+        top: 70px;
     }
 }
 

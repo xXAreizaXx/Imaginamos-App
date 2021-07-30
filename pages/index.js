@@ -13,11 +13,11 @@ import styles from '../styles/Home.module.css'
 import UserInfo from '../components/UserInfo/UserInfo'
 
 export default function Home() {
-  const [products, setProducts] = useState([])
   const [addCart, setAddCart] = useState([])
   const [count, setCount] = useState(1)
+  const [products, setProducts] = useState([])
+  const [total, setTotal] = useState([])
   var countAddCart = 1;
-  var totalPrice = 0
 
   const handleClickAdd = (e) => {
     const id = parseInt(e.target.id);
@@ -27,8 +27,15 @@ export default function Home() {
     setAddCart([...addCart, add])
   }
 
+
   const handleChangeAdd = (e) => {
     countAddCart = e.target.value;
+    const id = parseInt(e.target.id) - 1
+    const price = addCart[id].price;
+    const totalPrice = price * countAddCart;
+
+    document.getElementsByName(`${e.target.id}`)[0].innerHTML = totalPrice;
+    setTotal(totalPrice);
   }
 
 
@@ -73,7 +80,6 @@ export default function Home() {
           <OrderHeader count={addCart} />
           <h1 className={styles.titleMyOrder}>My 😎 Order</h1>
           <UserInfo />
-
           <div className={styles.cart}>
             {
               addCart.map(({ id, name, price, image }) =>
@@ -82,11 +88,11 @@ export default function Home() {
                   <input className={styles.countCart} type="number" min="1" placeholder="1" id={id} onChange={handleChangeAdd} />
                   <p>x</p>
                   <h5>{name}</h5>
-                  <p>{price}</p>
+                  <p name={id} accessKey={id}>{price}</p>
                 </div>
               )
             }
-            <h2 className={styles.totalBuy}>Total: {totalPrice}</h2>
+            <h2 className={styles.totalBuy}>Total: {total * count}</h2>
           </div>
           <div className={styles.totalCart}>
             <div className={styles.persons}>

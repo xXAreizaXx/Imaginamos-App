@@ -104,10 +104,25 @@
 }
 
 @media (max-width: 768px) {
-    .menu {
+    .listMenu {
         display: grid;
-        grid-template-columns: 90% 10%;
+        grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 180px);
+    }
+
+    .arrowSplit {
+        display: grid;
+        grid-area: 1 / 5 / span 2 / 10
+    }
+
+    .delivery {
+        width: 40%;
+    }
+
+    .navCategory h1 {
+        font-size: 30px;
+        display: flex;
+        align-items: center;
     }
 }
 
